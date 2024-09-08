@@ -13,8 +13,10 @@ def emotion_detector(text_to_analyse):
     # Convert the response text into a dictionary
     formatted_response = json.loads(response.text)
     
-    # Extract the required emotions and their scores
-    emotions = formatted_response['documentEmotion']['emotionScores']
+    # Navigate through the dictionary to extract the emotion scores
+    emotions = formatted_response['emotionPredictions'][0]['emotion']
+    
+    # Extract individual emotion scores
     anger_score = emotions['anger']
     disgust_score = emotions['disgust']
     fear_score = emotions['fear']
